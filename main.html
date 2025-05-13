@@ -9,7 +9,30 @@
 <body>	
 	<script>
 		function secondHighest(arr) {
-			//Write your code here
+			//Write your code here	if (arr.length < 2) return -Infinity;
+
+		
+			let first = -Infinity;
+			let second = -Infinity;
+
+			for (let num of arr) {
+				// Convert the input into a number
+				num = Number(num); 
+
+				// If num is greater than first, update both first and second
+				if (num > first) {
+					second = first;
+					first = num;
+				}
+				// If num is between first and second, update second
+				else if (num > second && num < first) {
+					second = num;
+				}
+			}
+
+			// If no second largest element found, return -Infinity
+			return second === -Infinity ? -Infinity : second;
+		}
 			
 		}
 
