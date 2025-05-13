@@ -9,30 +9,21 @@
 <body>	
 	<script>
 		function secondHighest(arr) {
-			//Write your code here	if (arr.length < 2) return -Infinity;
+			//Write your code here
+			arr = arr.map(Number);
 
-		
-			let first = -Infinity;
-			let second = -Infinity;
+      // Remove duplicates
+      const unique = [...new Set(arr)];
 
-			for (let num of arr) {
-				// Convert the input into a number
-				num = Number(num); 
+      // Less than 2 unique values? Return -Infinity
+      if (unique.length < 2) return -Infinity;
 
-				// If num is greater than first, update both first and second
-				if (num > first) {
-					second = first;
-					first = num;
-				}
-				// If num is between first and second, update second
-				else if (num > second && num < first) {
-					second = num;
-				}
-			}
+      // Sort in descending order
+      unique.sort((a, b) => b - a);
 
-			// If no second largest element found, return -Infinity
-			return second === -Infinity ? -Infinity : second;
-		}
+      // Return second highest
+      return unique[1];
+			
 			
 		}
 
